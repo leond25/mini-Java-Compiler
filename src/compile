@@ -1,0 +1,3 @@
+#!/bin/bash
+
+javac -cp ".:parse/wrangLR.0.8.5.jar" */*.java
