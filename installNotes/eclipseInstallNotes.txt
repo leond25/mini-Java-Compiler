@@ -1,0 +1,73 @@
+The project installation process for Eclipse is essentially identical
+to that of Assignments 3 and 4, except that the following should be
+dragged to the main project folder:
+- the same things as for Assignments 3 and 4:
+  - the jars folder
+  - the lib folder
+  - the sample MiniJava files (e.g., BreakYe.java, etc.)
+- and additionally, the runtime library asm-files:
+  - mjLib.asm
+  - mjLibAnn.asm
+
+Additionally, all files and folders in the 'src' folder (but not the 'src'
+folder itself) should be dragged into the 'src' folder in the project
+
+Below are details about running your compiler in Eclipse, and then running
+the generated code on the MIPS simulator
+
+================================================================
+Running your MiniJava compiler
+================================================================
+- right-click on Main5.java under src/main
+- Run As -> Java Application
+  - The first time it will report that is needs a file-name argument, so
+    add one:
+    - Run -> Run Configurations ...
+    - make sure that 'Main5' is selected in the left pane
+    - Arguments tab
+    - Type in a command line such as:
+        VerySimple.java -a mjLib.asm
+      - if you want to, you can also include a '-w', '-pp' or '-vpp' on
+        the command line
+      - if you want the "annotating" version of the MiniJava library use
+        arguments such as
+          VerySimple.java -a mjLibAnn.asm
+    - Press 'Run'
+    - Eclipse will remember these arguments, so you don't need to do this
+      step unless you want to change argument.
+
+Running the compiler should produce an assembly file (e.g., VerySimple.asm)
+- In order to see it, you may need to click on your top-level project icon
+  and refresh its file list (with the F5 key--or on the Mac the F5 key
+  with the fn key held down).  Your .asm file should now be visible.
+
+The starter-file project will:
+  - produce the vtables
+  - produce exacly one assembly-level image for each string literal in the
+    source program. (It will not produce exactly one image for every UNIQUE
+    string literal, as it should.)
+  - produce a 'main' label, with code that does a syscall that
+    immediately exits
+You should therefore be able to successfully assemble and run the code,
+but the MIPS code will, in effect, do nothing other than immediately exit.
+
+================================================================
+Running the generated code on the MIPS simulator
+================================================================
+- drag your VerySimple.asm file to a folder containing the MIPS simulator
+  (mips.bat and mips.jar, or similarly named jar file).
+- on a PC, drag the new copy of your VerySimple.asm file onto the mips.bat icon.
+- on a Mac (or if this does not work on a PC), double-click on MIPS
+  jar-file, and type in the name of your file, VerySimple.asm
+- the simulator should start running, allowing you run/debug the
+  assembly program
+
+================================================================
+To run a MiniJava program directly in Java
+================================================================
+- open the '(default package)' by clicking on the its triangle
+- copy the MiniJava file you want to run into the '(default package)'
+  - if this causes an error, delete the existing MiniJava file (or comment
+    out or rename its Main class)
+- right-click (or on a Mac, control-click) on 'RunMain.java'; choose
+  "Run As" -> "Java Application" from the menu

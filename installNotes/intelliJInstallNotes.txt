@@ -1,0 +1,71 @@
+The project installation process for Intellij is essentially identical
+to that of Assignments 3 and 4, except that the following should be
+dragged to the main project folder:
+- the same things as for Assignments 3 and 4:
+  - the jars folder
+  - the lib folder
+  - the sample MiniJava files (e.g., BreakYe.java, etc.)
+- and additionally, the runtime library asm-files:
+  - mjLib.asm
+  - mjLibAnn.asm
+
+Additionally, all files and folders in the 'src' folder (but not the 'src'
+folder itself) should be dragged into the 'src' folder in the project
+
+================================================================
+Running your MiniJava compiler
+================================================================
+- press triangle to open 'src' folder in left pane
+- press triangle to open 'main' folder in left pane
+- right-click (or on Mac, control-click) on 'Main5' class icon
+  menu: (green triangle) Run 'Main5.main()'
+
+First time run of the project, it should fail giving console message:
+  No input file name given
+To add the input file name:
+  - menu: Run -> Edit Configurations ...
+  - 'Configuration' tab
+  - Program arguments should be something like:
+        VerySimple.java -a mjLib.asm
+    - if you want to, you can also include a -w or -pp on the command line
+    - if you want the "annotating" version of the MiniJava library use
+      arguments such as:
+          VerySimple.java -a mjLibAnn.asm
+  - press 'OK'
+To rerun program, can do any of:
+- type control-R
+- press green triangle near top-right of window
+- menu item Run -> Run 'Main5'
+
+Running the compiler should produce an assembly file (e.g., VerySimple.asm).
+
+The starter-file project will:
+  - produce the vtables
+  - produce exacly one assembly-level image for each string literal in the
+    source program. (It will not produce exactly one image for every UNIQUE
+    string literal, as it should.)
+  - produce a 'main' label, with code that does a syscall that
+    immediately exits
+You should therefore be able to successfully assemble and run the code,
+but the MIPS code will, in effect, do nothing other than immediately exit.
+
+================================================================
+Running the generated code on the MIPS simulator
+================================================================
+- drag your VerySimple.asm file to a folder containing the MIPS simulator
+  (mips.bat and mips.jar, or similarly named jar file).
+- on a PC, drag the new copy of your VerySimple.asm file onto the mips.bat
+  icon.
+- on a Mac (or if this does not work on a PC), double-click on MIPS
+  jar-file, and type in the name of your file, Abc.asm
+- the simulator should start running, allowing you run/debug the
+  assembly program
+
+================================================================
+To run a MiniJava program in standard Java
+================================================================
+- copy the MiniJava file you want to run into the 'src' folder
+- right-click (or on a Mac, control-click) on 'RunMain'; choose
+  Run 'RunMain().main()'
+  - if this causes an "duplicate class name 'Main'" error, delete the
+    existing MiniJava file (or comment out or rename its Main class)
